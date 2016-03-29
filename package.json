@@ -1,0 +1,24 @@
+{
+  "name": "express-rest-server",
+  "version": "0.0.1",
+  "description": "Express, passport REST app",
+  "main": "server.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "express",
+    "passport",
+    "REST"
+  ],
+  "author": "james filtness",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.1"
+  }
+}
