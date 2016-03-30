@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Playlist = require('./models/Playlist');
 
-// Connect to the beerlocker MongoDB
+// Connect to MongoDB via <ongoose
 mongoose.connect('mongodb://localhost:27017/rest-server');
 
 var app = express();
@@ -12,16 +12,10 @@ var app = express();
 // Use environment defined port or 3000
 var port = process.env.PORT || 3000;
 
-// Create our Express router
+// Create Express router
 var router = express.Router();
 
-// Initial dummy route for testing
-// http://localhost:3000/api
-router.get('/', function(req, res) {
-  res.json({ message: 'You are running dangerously low on beer!' });
-});
-
-// Create a new route with the prefix /beers
+// Create a new route with the prefix /playlist
 var playListRoute = router.route('/playlist');
 
 // Create endpoint /api/beers for POSTS
@@ -39,6 +33,30 @@ playListRoute.post(function(req, res) {
       res.send(err);
 
     res.json({ message: 'Playlist added', data: playlist });
+  });
+});
+
+playListRoute.get(function(req, res) {
+  Playlist.find(function(err, playlist) {
+      if (err)
+        res.send(err);
+
+      res.json(playlist);
+
+  });
+});
+
+// Create a new route with the /beers/:beer_id prefix
+var PlayListRoute = router.route('/playlist/:playlist_id');
+
+// Create endpoint /api/beers/:beer_id for GET
+PlayListRoute.get(function(req, res) {
+  // Use the Beer model to find a specific beer
+  Playlist.findById(req.params.playlist_id, function(err, playlist) {
+    if (err)
+      res.send(err);
+
+    res.json(playlist);
   });
 });
 
