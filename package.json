@@ -1,27 +1,26 @@
 {
-  "name": "express-rest-server",
-  "version": "0.0.1",
-  "description": "Express, passport REST app",
+  "name": "express-temp",
+  "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": ""
   },
-  "keywords": [
-    "express",
-    "passport",
-    "REST"
-  ],
-  "author": "james filtness",
+  "author": "James Filtness",
   "license": "MIT",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "method-override": "^2.3.5",
     "mongoose": "^4.4.10",
     "passport": "^0.3.2",
-    "passport-http": "^0.3.0"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.9.1"
+    "morgan": "^1.7.0"
   }
 }
