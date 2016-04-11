@@ -4,7 +4,8 @@ var config = require('./config'),
     compression = require('compression'),
     methodOverride = require('method-override'),
     session = require('express-session'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    passport = require('passport');
 
 module.exports = function() {
     var app = express();
@@ -25,14 +26,14 @@ module.exports = function() {
     //Allow PUT and DELETE
     app.use(methodOverride('X-HTTP-Method-Override'));
 
-    //Set up sessions
-    app.use(session({
-        saveUninitialized: true,
-        resave: true,
-        secret: config.sessionSecret
-    }));
+    app.use(passport.initialize());
+
+    app.set('views', './views');
+    app.set('view engine', 'ejs');
+
 
     require('../routes/user.route.js')(app);
+    require('../routes/test.route.js')(app);
     require('../routes/playlist.route.js')(app);
     return app;
 };
